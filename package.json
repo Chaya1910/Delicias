@@ -18,5 +18,13 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "main": "app.js"
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chaya1910/Delicias.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Chaya1910/Delicias/issues"
+  },
+  "homepage": "https://github.com/Chaya1910/Delicias#readme"
 }
