@@ -9,21 +9,7 @@ import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
-
-//import Grocery from "./components/Grocery";
-
-// Chunking
-// Code Splitting
-// Dynamic Bundling
-// lazy Loading
-// on demand loading
-// dynamix imoprt
-
-const Grocery = lazy(() => import("./components/Grocery"));
-
 const About = lazy(() => import("./components/About"));
-
-
 
 const AppLayout = () => {
     return (
@@ -56,14 +42,6 @@ const appRouter = createBrowserRouter([
             {
                 path: '/contact',
                 element: <Contact />
-            },
-            {
-                path: "/grocery",
-                element: (
-                  <Suspense fallback={<h1>Loading....</h1>}>
-                    <Grocery />
-                  </Suspense>
-                ),
             },
             {
                 path: '/restaurant/:resId',

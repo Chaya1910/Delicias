@@ -1,4 +1,3 @@
-// import { restaurantList } from "../constants";
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
@@ -26,7 +25,26 @@ const Body = () => {
 
   useEffect(() => {
     getRestaurants();
+    getWhatsOnMind();
   }, []);
+
+  async function getWhatsOnMind(){
+    try{
+      const res = await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=15.4909301&lng=73.8278496&collection=83637&tags=layout_CCS_Burger&sortBy=&filters=&type=rcv2&offset=0&page_type=null");
+      if(!res.ok){
+        const err = res.status;
+        throw new Error(err);
+      }
+      else{
+        const jres = await res.json();
+        const coll = jres?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.info;
+        console.log('whats on my mind below');
+        console.log(jres);
+      }
+    }catch(e){
+        console.error(e);
+    }
+  }
 
   async function getRestaurants() {
     try {
@@ -122,7 +140,8 @@ const Body = () => {
           Top Rated Restaurants
         </button>
       </div>
-      <div className="restaurant-list">
+      <h1 className="font-semibold text-md">Restaurants with online food delivery</h1>
+      <div className="flex flex-wrap py-2">
         {filteredRestaurants?.length === 0 && <h1>No results found!</h1>}
         {filteredRestaurants.map((restaurant) => {
           return <Link

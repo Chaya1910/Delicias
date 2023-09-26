@@ -1,4 +1,5 @@
 import { IMG_CDN_URL } from "../constants";
+import Star from "../assets/img/Star.png";
 
 // const RestaurantCard = ({id, name, cuisines, cloudinaryImageId, lastMileTravelString}) => {
 
@@ -10,22 +11,21 @@ import { IMG_CDN_URL } from "../constants";
           avgRating,
           cuisines,
           costForTwo,
-          deliveryTime,
+          areaName,
         } = resData?.info;
 
 
         return (
-            <div>
+            <div className="p-3 m-1 h-88 w-64">
               <img
-                className="rounded-lg"
+                className="rounded-2xl h-40 w-64"
                 alt="res-logo"
                 src={IMG_CDN_URL + cloudinaryImageId}
               />
-              <h3 className="font-bold py-4 text-lg">{name}</h3>
-              <h4>{cuisines.join(", ")}</h4>
-              <h4>{avgRating} stars</h4>
-              <h4>₹{costForTwo / 100} FOR TWO</h4>
-              <h4>{deliveryTime} minutes</h4>
+              <h3 className="font-semibold py-1 text-md truncate pl-1">{name}</h3>
+              <h4 className=""><img src={Star} className="h-5 inline pr-2 mb-1 pl-1"/>{avgRating}</h4>
+              <h4 className="text-wrap truncate pl-1 font-light text-sm">{cuisines.join(", ")}</h4>
+              <h4 className="pl-1 font-light text-sm">{areaName}</h4>
             </div>
           );
         };
